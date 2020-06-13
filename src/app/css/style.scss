@@ -2,7 +2,55 @@
 @import 'mixin';
 @import 'fonts';
 
-.hello {
-  font-family: 'AvenirNextCyr', Arial, sans-serif;
-  color: $textColorDefault;
+.diagram{
+  height: 130px;
+  width: 130px;
+  position: relative;
+  background: #2d2d2d;
 }
+
+.required{
+  height: 130px;
+  width: 130px;
+  position: absolute;
+  border-radius: 50%;
+  background: #4d4d4d;
+  z-index: 1;
+}
+
+.collected{
+  height: 130px;
+  width: 130px;
+  position: absolute;
+  z-index: 3;
+}
+
+.expected{
+  height: 130px;
+  width: 130px;
+  position: absolute;
+  z-index: 2;
+}
+
+.month{
+  position: absolute;
+  z-index: 4;
+  top: 23px;
+  left: 23px;
+  height: 84px;
+  width: 84px;
+  background: #2d2d2d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & span{
+    font-size: 14px;
+    font-family: AvenirNextCyr;
+    line-height: 0.93;
+    letter-spacing: 0.56px;
+    color: #d9d9d9;
+  }
+
+}
+
