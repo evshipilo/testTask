@@ -1,5 +1,4 @@
-@import 'var';
-@import 'mixin';
+
 @import 'fonts';
 
 .diagram{
@@ -47,10 +46,37 @@
   & span{
     font-size: 14px;
     font-family: AvenirNextCyr;
-    line-height: 0.93;
-    letter-spacing: 0.56px;
     color: #d9d9d9;
   }
+}
 
+.users-table{
+  font-family: AvenirNextCyr;
+  width: 617px;
+  border-collapse: collapse !important;
+  text-align: center;
+
+}
+
+.img-wrapper{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  & img{
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+.tab-header {
+  & th {
+    background: #eaeaea;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    height: 50px;
+  }
 }
 

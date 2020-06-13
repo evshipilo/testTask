@@ -30,6 +30,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const webpack = require('webpack');
 require('dotenv').config()
@@ -65,14 +66,14 @@ const config = {
   devtool: setDevTool(),
   module: {
     rules: [{
-        test: /\.html$/,
-        use: [{
-          loader: 'html-loader',
-          options: {
-            minimize: false
-          }
-        }]
-      },
+      test: /\.html$/,
+      use: [{
+        loader: 'html-loader',
+        options: {
+          minimize: false
+        }
+      }]
+    },
       {
         test: /\.js$/,
         use: 'babel-loader',
@@ -151,12 +152,20 @@ const config = {
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
+    new CopyPlugin([
+      {
+        from: 'src/img/*',
+        to: 'img/',
+        flatten: true,
+        force: true,
+      },
+    ]),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
       favicon: "./src/favicon.ico"
     }),
-      new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
       API_KEY: JSON.stringify(process.env.API_KEY),
       APP_ENV: JSON.stringify(process.env.APP_ENV)
     })
