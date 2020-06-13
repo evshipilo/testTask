@@ -5,11 +5,19 @@ import PropTypes from 'prop-types'
 
 class Table extends React.Component {
   render() {
-    const items = this.props.donations.map((it, index) => <tr key={it.donationID}>
+    const items = this.props.donations.map((it, index) => <tr key={it.donationID}
+      className={it.userID === this.props.currentUserID ? 'current-user' : 'user'}>
       <td key={`${it.donationID}0`}><div className='img-wrapper'><img src={it.photo} alt="img"/></div></td>
       <td key={`${it.donationID}1`}><span>{it.name}</span><br/><span>{it.surname}</span></td>
-      <td key={`${it.donationID}2`}><span>{it.intention ? `${it.intention}$` : null}</span></td>
-      <td key={`${it.donationID}3`}><span>{it.commitment ? `${it.commitment}$` : null}</span></td>
+      <td key={`${it.donationID}2`}>{it.intention ? <div className='back'><span>$ {it.intention}</span></div> : null}</td>
+      <td key={`${it.donationID}3`}>
+        {it.commitment ? <div className='back'><span>$ {it.commitment}</span></div> : <div className='back-fake'> </div>}
+        <div className='basket-wrapper'>
+          {it.userID === this.props.currentUserID && <div className='basket'
+            onClick={() => this.props.deleteDonation(index)}
+          ><img src="img/basket.png" alt="img"/></div>}
+        </div>
+      </td>
     </tr>)
     return (
       <table className='users-table'>
@@ -28,7 +36,9 @@ class Table extends React.Component {
 }
 
 Table.propTypes = {
-  donations: PropTypes.object
+  donations: PropTypes.object,
+  currentUserID: PropTypes.num,
+  deleteDonation: PropTypes.func
 }
 
 export default Table

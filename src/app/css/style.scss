@@ -51,6 +51,7 @@
 }
 
 .users-table{
+  margin-top: 20px;
   font-family: AvenirNextCyr;
   width: 617px;
   border-collapse: collapse !important;
@@ -58,11 +59,34 @@
 
 }
 
+.basket{
+  display: none;
+  position: absolute;
+  right: 20px;
+  top:-25px;
+  cursor: pointer;
+}
+
+.basket-wrapper{
+  position: relative;
+}
+
+
+.current-user{
+  position: relative;
+  &:hover{
+    .basket{
+      display: inline-block;
+    }
+  }
+}
+
 .img-wrapper{
   width: 44px;
   height: 44px;
   border-radius: 50%;
   overflow: hidden;
+  display: inline-block;
   & img{
     width: 44px;
     height: 44px;
@@ -80,3 +104,43 @@
   }
 }
 
+tr{
+  height: 75px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.current-user{
+  background-color: #5a5a5a;
+  color: white;
+  & .back{
+    background-color: #ffc517;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  & .back-fake{
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+  }
+}
+
+.user{
+  color: #d7d7d7;
+  & .back{
+    background-color: #f9f9f9;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 20px;
+    color: #ffc826;
+  }
+  & .back-fake{
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+  }
+}

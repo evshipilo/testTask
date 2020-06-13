@@ -56,7 +56,7 @@ class App extends React.Component {
           photo: 'img/1.jpg',
           name: 'Иван',
           surname: 'Петров',
-          intention: 100,
+          intention: 300,
           commitment: null,
           userID: 1,
           donationID: 4
@@ -67,8 +67,9 @@ class App extends React.Component {
     this.sortDonationsByUserID = this.sortDonationsByUserID.bind(this)
   }
 
-  deleteDonation(donationID) {
-
+  deleteDonation(index) {
+    const del = this.state.donations.splice(index, 1)
+    this.setState({ donation: del })
   }
 
   sortDonationsByUserID(userID) {
@@ -94,6 +95,7 @@ class App extends React.Component {
         <Table
           donations={this.state.donations}
           currentUserID={this.state.currentUserID}
+          deleteDonation={this.deleteDonation}
         />
 
       </div>
